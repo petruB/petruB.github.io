@@ -11,24 +11,15 @@
     <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "Build/HTML5.json", {onProgress: UnityProgress});
     </script>
-	<style>
-		body , html {
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-			height: 100vh;
-			width: 100vw;
-		}
-	</style>
   </head>
-  <body onload="unityInstance.SetFullscreen(1)">
+  <body>
     <div class="webgl-content">
-      <div id="unityContainer" style="width: 1080px; height: 1920px"></div>
-      <!-- <div class="footer"> -->
-        <!-- <div class="webgl-logo"></div> -->
-        <!-- <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div> -->
-        <!-- <div class="title">KidsCornerProject</div> -->
-      <!-- </div> -->
+      <div id="unityContainer" style="width: 100%; height: 100%"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">KidsCornerProject</div>
+      </div>
     </div>
   </body>
 </html>
