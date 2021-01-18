@@ -1,0 +1,159 @@
+{
+	"metadata": {
+		"type": "App"
+	},
+	"project": {
+		"shadows": true,
+		"shadowType": 1,
+		"vr": true,
+		"physicallyCorrectLights": false,
+		"toneMapping": 0,
+		"toneMappingExposure": 1
+	},
+	"camera": {
+		"metadata": {
+			"version": 4.5,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"object": {
+			"uuid": "53F05FB0-B7A0-4DFA-8CC4-5D2C102D605E",
+			"type": "PerspectiveCamera",
+			"name": "Camera",
+			"layers": 1,
+			"matrix": [0.629102,0,-0.777322,0,-0.399541,0.857793,-0.323356,0,0.666781,0.513996,0.539639,0,3.126002,2.409715,2.529936,1],
+			"fov": 50,
+			"zoom": 1,
+			"near": 0.1,
+			"far": 10000,
+			"focus": 10,
+			"aspect": 1.728922,
+			"filmGauge": 35,
+			"filmOffset": 0
+		}
+	},
+	"scene": {
+		"metadata": {
+			"version": 4.5,
+			"type": "Object",
+			"generator": "Object3D.toJSON"
+		},
+		"geometries": [
+			{
+				"uuid": "EA781333-F3AE-470D-9110-A9724FCB42AA",
+				"type": "IcosahedronBufferGeometry",
+				"radius": 1,
+				"detail": 4
+			},
+			{
+				"uuid": "66050B15-04A9-44DE-88A7-6E2F14FCB8FB",
+				"type": "BoxBufferGeometry",
+				"width": 1,
+				"height": 1,
+				"depth": 1,
+				"widthSegments": 1,
+				"heightSegments": 1,
+				"depthSegments": 1
+			}],
+		"materials": [
+			{
+				"uuid": "50ED51F1-DEA4-4B61-8082-BF41609E8C27",
+				"type": "ShaderMaterial",
+				"depthFunc": 3,
+				"depthTest": true,
+				"depthWrite": true,
+				"stencilWrite": false,
+				"stencilWriteMask": 255,
+				"stencilFunc": 519,
+				"stencilRef": 0,
+				"stencilFuncMask": 255,
+				"stencilFail": 7680,
+				"stencilZFail": 7680,
+				"stencilZPass": 7680,
+				"wireframe": true,
+				"glslVersion": null,
+				"uniforms": {
+					"time": {
+						"value": 0
+					}
+				},
+				"vertexShader": "uniform float time;\nvarying vec3 vPosition;\nvoid main() {\n\tvPosition = position;\n\tvPosition.x += sin( time + vPosition.z * 4.0 ) / 4.0;\n\tvPosition.y += cos( time + vPosition.z * 4.0 ) / 4.0;\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( vPosition, 1.0 );\n}",
+				"fragmentShader": "varying vec3 vPosition;\nvoid main() {\n\tgl_FragColor = vec4( vPosition * 2.0, 1.0 );\n}"
+			},
+			{
+				"uuid": "2D6C431B-6E34-41BD-806A-3DC66F28E643",
+				"type": "MeshNormalMaterial",
+				"depthFunc": 3,
+				"depthTest": true,
+				"depthWrite": true,
+				"stencilWrite": false,
+				"stencilWriteMask": 255,
+				"stencilFunc": 519,
+				"stencilRef": 0,
+				"stencilFuncMask": 255,
+				"stencilFail": 7680,
+				"stencilZFail": 7680,
+				"stencilZPass": 7680
+			}],
+		"object": {
+			"uuid": "5FC9ACA9-2A93-474D-AA32-FACC76551914",
+			"type": "Scene",
+			"name": "Scene",
+			"layers": 1,
+			"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+			"children": [
+				{
+					"uuid": "FC7B6CF2-6386-4F47-9CE6-8ADB9FCA6E1F",
+					"type": "Mesh",
+					"name": "Icosahedron 1",
+					"layers": 1,
+					"matrix": [-0.904086,0,0.427351,0,0,1,0,0,-0.427351,0,-0.904086,0,0,0,0,1],
+					"geometry": "EA781333-F3AE-470D-9110-A9724FCB42AA",
+					"material": "50ED51F1-DEA4-4B61-8082-BF41609E8C27"
+				},
+				{
+					"uuid": "A4C4B725-28BF-4F72-8DF5-E7B115D39A49",
+					"type": "Mesh",
+					"name": "Box",
+					"layers": 1,
+					"matrix": [0.930444,-0.201932,-0.305773,0,0.21209,0.97725,0,0,0.298817,-0.064851,0.952104,0,-1.16569,0.316736,1.049197,1],
+					"geometry": "66050B15-04A9-44DE-88A7-6E2F14FCB8FB",
+					"material": "2D6C431B-6E34-41BD-806A-3DC66F28E643"
+				},
+				{
+					"uuid": "F21E1FB7-C941-42C3-A0A3-42C40AC4C302",
+					"type": "PointLight",
+					"name": "PointLight",
+					"layers": 1,
+					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,-0.050824,0.197676,0,1],
+					"color": 185335,
+					"intensity": 1,
+					"distance": 0,
+					"decay": 1,
+					"shadow": {
+						"camera": {
+							"uuid": "1D158949-85CA-4A08-83D7-FDA3998884E6",
+							"type": "PerspectiveCamera",
+							"layers": 1,
+							"fov": 90,
+							"zoom": 1,
+							"near": 0.5,
+							"far": 500,
+							"focus": 10,
+							"aspect": 1,
+							"filmGauge": 35,
+							"filmOffset": 0
+						}
+					}
+				}],
+			"background": 14564250
+		}
+	},
+	"scripts": {
+		"FC7B6CF2-6386-4F47-9CE6-8ADB9FCA6E1F": [
+			{
+				"name": "",
+				"source": "function update( event ) {\n\n\tthis.material.uniforms.time.value = event.time / 500.0;\n\n}"
+			}]
+	}
+}
