@@ -17,11 +17,11 @@
 			"generator": "Object3D.toJSON"
 		},
 		"object": {
-			"uuid": "B82AED1A-C346-48D6-BB67-001174C16D7D",
+			"uuid": "B07FFA8F-C98D-48C3-B3E8-A97552569C9F",
 			"type": "PerspectiveCamera",
 			"name": "Camera",
 			"layers": 1,
-			"matrix": [0.99639,0,-0.084898,0,-0.042552,0.865324,-0.499404,0,0.073464,0.501213,0.8622,0,0.257805,2.758889,7.025688,1],
+			"matrix": [0.999266,0,0.038313,0,0.017656,0.887476,-0.460515,0,-0.034001,0.460853,0.886825,0,-0.256791,3.480533,6.697624,1],
 			"fov": 50,
 			"zoom": 1,
 			"near": 0.1,
@@ -114,7 +114,7 @@
 							"type": "PerspectiveCamera",
 							"name": "PerspectiveCamera",
 							"layers": 1,
-							"matrix": [-1,0,0,0,0,1,0,0,0,0,-1,0,0,0,0,1],
+							"matrix": [-1,0,0,0,0,-1,0,0,0,0,1,0,0,0,0,1],
 							"fov": 50,
 							"zoom": 1,
 							"near": 0.1,
@@ -151,11 +151,6 @@
 			{
 				"name": "",
 				"source": "function update( event ) {\n\n\tthis.material.uniforms.time.value = event.time / 500.0;\n\n}"
-			}],
-		"8A7BA5BD-3FD3-45F7-923D-B6E346A4A637": [
-			{
-				"name": "Orbit",
-				"source": "function update( event ) {\n\n\tvar time = event.time * 0.001;\n\n\tthis.position.x = Math.sin( time ) * 4;\n\tthis.position.z = Math.cos( time ) * 4;\n\tthis.lookAt( scene.position );\n\n}"
 			}],
 		"70CCD720-8E31-41D2-9CC1-C45CDEC3F161": [
 			{
