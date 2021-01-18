@@ -110,7 +110,7 @@
 					"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,1,4,1],
 					"children": [
 						{
-							"uuid": "3B53344A-BC4B-4BA3-B16A-1990FBE94DCD",
+							"uuid": "70CCD720-8E31-41D2-9CC1-C45CDEC3F161",
 							"type": "PerspectiveCamera",
 							"name": "PerspectiveCamera",
 							"layers": 1,
@@ -118,7 +118,7 @@
 							"fov": 50,
 							"zoom": 1,
 							"near": 0.1,
-							"far": 2000,
+							"far": 100,
 							"focus": 10,
 							"aspect": 1,
 							"filmGauge": 35,
@@ -156,6 +156,11 @@
 			{
 				"name": "Orbit",
 				"source": "function update( event ) {\n\n\tvar time = event.time * 0.001;\n\n\tthis.position.x = Math.sin( time ) * 4;\n\tthis.position.z = Math.cos( time ) * 4;\n\tthis.lookAt( scene.position );\n\n}"
+			}],
+		"70CCD720-8E31-41D2-9CC1-C45CDEC3F161": [
+			{
+				"name": "Player Camera",
+				"source": "player.setCamera( this );"
 			}]
 	}
 }
