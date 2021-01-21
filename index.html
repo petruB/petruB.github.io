@@ -1,208 +1,25 @@
-<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://unpkg.com/swiper/css/swiper.css><style>body {
-      background-color: black;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    #containerScene {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-    #canv {
-      width: 100% !important;
-      height: 100% !important;
-      display: block;
-    }
-    .labelRenderer {
-      transition: all .8s cubic-bezier(.17, .67, .49, .97);
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0);
-      /* width: 100%;
-      height: 100%; */
-      top: 0;
-    }
-
-    .infoContainer {
-      background-color: blueviolet;
-      color: #FFF;
-
-      width: 0px;
-      height: 0px;
-
-
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-start;
-
-      text-align: left;
-
-
-    }
-
-    .panel {
-      transition: all .8s cubic-bezier(.17, .67, .49, .97);
-      display: flex;
-      position: absolute;
-      justify-content: flex-end;
-      flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
-      background: rgba(180, 180, 180, 0);
-      border-radius: 10px;
-      width: 0px;
-      height: 0px;
-      /* padding-top: 80px;
-      padding-left: 40px;
-      padding-right: 40px;
-      padding-bottom: 40px; */
-      overflow: hidden;
-    }
-
-    .title {
-      transition: all .8s cubic-bezier(.17, .67, .49, .97);
-      /* background-color: blueviolet; */
-      /* position: relative; */
-
-      /* transition: all .8s cubic-bezier(.17, .67, .49, .97); */
-      font-size: 16px;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: left;
-      color: #323232;
-      display: flex;
-      flex-direction: column;
-      justify-content: left;
-      align-items: left;
-      overflow: hidden;
-      width: 100%;
-      height: 100px;
-      opacity: 0;
-
-    }
-
-    .linkButton {
-      transition: all .8s cubic-bezier(.17, .67, .49, .97);
-      width: 200px;
-      height: 60px;
-      background: rgba(255, 183, 0, 1);
-      border-radius: 7px;
-      display: flex;
-      color: #323232;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-family: Arial, Helvetica, sans-serif;
-      text-transform: uppercase;
-      font-size: 16px;
-      font-weight: bold;
-      margin-top: 20px;
-      margin-left: calc(100% - 200px);
-      overflow: hidden;
-      border-style: solid;
-      border-width: 2px;
-      opacity: 0;
-    }
-
-    .label {
-      position: absolute;
-      transition: all .8s cubic-bezier(.17, .67, .49, .97);
-      font-size: 40px;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-      color: #323232;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255, 183, 0, 1);
-      border-radius: 50%;
-      border-style: solid;
-      border-width: 2px;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      z-index: 100;
-    }
-
-    .swiper-container {
-      transition: all .8s cubic-bezier(.17, .67, .49, .97);
-      display: flex;
-      background: none;
-      font-family: Arial;
-      /* font-size: 10px; */
-      color: #000;
-      width: 100%;
-      height: 100%;
-      /* overflow: hidden; */
-      /* margin: 60px 90px 0px 40px; */
-
-      /* background-color: aquamarine; */
-    }
-
-    .swiper-slide {
-      /* background-color: blueviolet; */
-      font-size: 12px;
-
-      height: auto;
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      /* padding-top: 20px; */
-      padding-right: 20px;
-      /* padding: 10px; */
-    }
-
-    .swiper-scrollbar {
-      width: 10px !important;
-      background-color: #3232328a;
-    }
-
-    .swiper-scrollbar-drag {
-      width: 6px;
-      background: rgba(255, 183, 0, 1);
-      border-style: solid;
-      border-width: 2px;
-    }
-
-    .fullScreenButton {
-      position: absolute;
-      font-size: 40px;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-      color: #323232;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255, 183, 0, 1);
-      border-radius: 7px;
-      border-style: solid;
-      border-width: 2px;
-      width: 50px;
-      height: 50px;
-      top: 50px;
-      right: 50px;
-      z-index: 500;
-    }
-
-    h2 {
-      position: relative;
-      width: 320px;
-      height: 35px;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      /* background-color: burlywood; */
-      /* width: 0; */
-    }
-
-    h4 {
-      width: 320px;
-      margin: 0;
-    }</style><link href=/css/app.4b053009.css rel=preload as=style><link href=/js/app.e3919113.js rel=preload as=script><link href=/js/chunk-vendors.28d0d835.js rel=preload as=script><link href=/css/app.4b053009.css rel=stylesheet></head><body><script src=https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js></script><script src=https://unpkg.com/swiper/js/swiper.js></script><script src=js/THREEx.FullScreen.js></script><script src=js/scene_1.js type=module></script><script src=/js/chunk-vendors.28d0d835.js></script><script src=/js/app.e3919113.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | IQOS_ILUMA_VR</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/WebXR_Build.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">IQOS_ILUMA_VR</div>
+      </div>
+    </div>
+  </body>
+</html>
