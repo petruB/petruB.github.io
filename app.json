@@ -17,11 +17,11 @@
 			"generator": "Object3D.toJSON"
 		},
 		"object": {
-			"uuid": "AD82DB0A-D620-4FE7-909F-876596590549",
+			"uuid": "6AFBBE99-1778-4C13-8725-1E294AFE151F",
 			"type": "PerspectiveCamera",
 			"name": "Camera",
 			"layers": 1,
-			"matrix": [0.970041,0,-0.242943,0,-0.048226,0.980099,-0.192562,0,0.238108,0.198509,0.950736,0,3.740742,3.118074,14.935345,1],
+			"matrix": [0.970041,0,-0.242943,0,-0.048226,0.980099,-0.192562,0,0.238108,0.198509,0.950736,0,0.095243,1.079404,4.380294,1],
 			"fov": 50,
 			"zoom": 1,
 			"near": 0.1,
@@ -278,6 +278,11 @@
 			{
 				"name": "Player Camera",
 				"source": "player.setCamera( this );"
+			}],
+		"B7CBBC6F-EC26-49B5-8D0D-67D9C535924B": [
+			{
+				"name": "Stats",
+				"source": "(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()\n"
 			}]
 	}
 }
