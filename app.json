@@ -17,11 +17,11 @@
 			"generator": "Object3D.toJSON"
 		},
 		"object": {
-			"uuid": "6AFBBE99-1778-4C13-8725-1E294AFE151F",
+			"uuid": "38BB5767-57C3-4A93-AA32-1FE1D5F62A18",
 			"type": "PerspectiveCamera",
 			"name": "Camera",
 			"layers": 1,
-			"matrix": [0.970041,0,-0.242943,0,-0.048226,0.980099,-0.192562,0,0.238108,0.198509,0.950736,0,0.095243,1.079404,4.380294,1],
+			"matrix": [0.81865,0,-0.574293,0,-0.271064,0.8816,-0.3864,0,0.506297,0.471997,0.721722,0,2.284581,2.129806,3.256652,1],
 			"fov": 50,
 			"zoom": 1,
 			"near": 0.1,
@@ -169,7 +169,7 @@
 						{
 							"uuid": "60B69C58-4201-43FD-815E-AD2EDFBBD0CE",
 							"type": "PerspectiveCamera",
-							"name": "PerspectiveCamera",
+							"name": "OPerspectiveCamera",
 							"layers": 1,
 							"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
 							"fov": 50,
@@ -177,7 +177,7 @@
 							"near": 0.1,
 							"far": 100,
 							"focus": 10,
-							"aspect": 1,
+							"aspect": 1.728922,
 							"filmGauge": 35,
 							"filmOffset": 0
 						}]
@@ -279,10 +279,10 @@
 				"name": "Player Camera",
 				"source": "player.setCamera( this );"
 			}],
-		"B7CBBC6F-EC26-49B5-8D0D-67D9C535924B": [
+		"3741222A-BD8F-401C-A5D2-5A907E891896": [
 			{
-				"name": "Stats",
-				"source": "(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()\n"
+				"name": "",
+				"source": "var box = this.getObjectByName(\"Box\");\n\n    var raycaster = new THREE.Raycaster();\n    var mouse = new THREE.Vector2(1, 1);\n    var intersects = [];\n\n    function mouseup(event){\n    \tmouse.x = ( event.clientX / player.width ) * 2 - 1;\n    \tmouse.y = - ( event.clientY / player.height ) * 2 + 1;\n    }\n\n    function update( event ) {\n    \traycaster.setFromCamera(mouse, camera);\n    \tintersects = raycaster.intersectObject(box);\n    \tif (intersects.length !== 0) {\n    \t\tlet obj = intersects[0].object;\n    \t\tobj.material.color.set(0xffff00);\n    \t}\n    }"
 			}]
 	}
 }
