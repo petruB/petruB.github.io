@@ -35,60 +35,54 @@ var APP = {
 
 		// By Daedelus: https://www.shadertoy.com/user/Daedelus
 		// license: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
-		#define TIMESCALE 0.25 
-		#define TILES 8
-		#define COLOR 0.7, 1.6, 2.8
+		// #define TIMESCALE 0.25 
+		// #define TILES 8
+		// #define COLOR 0.7, 1.6, 2.8
 
-		#define S(a, b, t) smoothstep(a, b, t)
-#define HEART_COLOR vec3(1., .05, .05)
+		#define TAU 6.28318530718
 
-		// void mainImage( out vec4 fragColor, in vec2 fragCoord )
-		// {
-		// 	vec2 uv = fragCoord.xy / iResolution.xy;
-		// 	uv.x *= iResolution.x / iResolution.y;
-			
-		// 	vec4 noise = texture2D(iChannel0, floor(uv * float(TILES)) / float(TILES));
-		// 	float p = 1.0 - mod(noise.r + noise.g + noise.b + iTime * float(TIMESCALE), 1.0);
-		// 	p = min(max(p * 3.0 - 1.8, 0.1), 2.0);
-			
-		// 	vec2 r = mod(uv * float(TILES), 1.0);
-		// 	r = vec2(pow(r.x - 0.5, 2.0), pow(r.y - 0.5, 2.0));
-		// 	p *= 1.0 - pow(min(1.0, 12.0 * dot(r, r)), 2.0);
-			
-		// 	fragColor = vec4(COLOR, 1.0) * p;
-		// }
+		#define TILING_FACTOR 1.0
+		#define MAX_ITER 8
 
-		void mainImage( out vec4 fragColor, in vec2 fragCoord )
-{
-    vec2 uv = (fragCoord-iResolution.xy * .5)/iResolution.y;
-    //vec2 m = iMouse.xy/iResolution.xy;
-    
-    
-    vec3 col = vec3(0);
-    
-    //De aici in inima
-    float r = .25;
-    float b = .01;
-    
-    uv.x *= .7;
-    float a = sqrt(abs(uv.x)) * .5;
-    float k = .1;
-    float h = clamp((b-a)/k+.5, .0, 1.);
-    
-    uv.y -= mix(a, b, h) + h*(1.-h)*k*.5;
-    uv.y += .1 + b * .5;
-    
-    float d = length(uv);
-    float c = S(r+b, r-b-.01, d);
-    
-    
-    //float c = Heart(uv, m.y);
-    
-    
-    col = vec3(c*HEART_COLOR);
-        
-    fragColor = vec4(col,1.0);
-}
+		void mainImage( out vec4 fragColor, in vec2 fragCoord ) 
+		{
+			float time = iTime * 0.1+23.0;
+			vec2 uv = fragCoord.xy / iResolution.xy;
+			vec2 uv_square = vec2(uv.x * iResolution.x / iResolution.y, uv.y);
+			float dist_center = pow(2.0*length(uv - 0.5), 2.0);
+			
+			float foaminess = smoothstep(0.4, 1.8, dist_center);
+			float clearness = 0.1 + 0.9*smoothstep(0.1, 0.5, dist_center);
+			
+			vec2 p = mod(uv_square*TAU*TILING_FACTOR, TAU)-250.0;
+			
+			//waterHighlight
+			vec2 i = vec2(p);
+			float c = 0.0;
+			float foaminess_factor = mix(1.0, 6.0, foaminess);
+			float inten = .005 * foaminess_factor;
+
+			for (int n = 0; n < MAX_ITER; n++) 
+			{
+				float t = time * (1.0 - (3.5 / float(n+1)));
+				i = p + vec2(cos(t - i.x) + sin(t + i.y), sin(t - i.y) + cos(t + i.x));
+				c += 1.0/length(vec2(p.x / (sin(i.x+t)),p.y / (cos(i.y+t))));
+			}
+			c = 0.2 + c / (inten * float(MAX_ITER));
+			c = 1.17-pow(c, 1.4);
+			c = pow(abs(c), 8.0);
+			
+			
+			c = c / sqrt(foaminess_factor);
+			
+			vec3 water_color = vec3(0.1, 0.5, 0.0);
+			vec3 color = vec3(c);
+			color = clamp(color + water_color, 0.0, 1.0);
+			
+			color = mix(water_color, color, clearness);
+
+			fragColor = vec4(color, 1.0);
+		}
 
 		varying vec2 vUv;
 
@@ -330,7 +324,7 @@ var APP = {
 			}
 
 			cubes.forEach((cube, ndx) => {
-				const speed = 1 + ndx * .1;
+				const speed = .01 + ndx * .1;
 				const rot = time * speed;
 				cube.rotation.x = rot;
 				cube.rotation.y = rot;
