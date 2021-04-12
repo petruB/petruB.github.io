@@ -1,8 +1,0 @@
-{
-    "liveServer.settings.https": {
-        "enable": true, //set it true to enable the feature.
-        "cert": "C:\\xampp\\apache\\conf\\key\\certificate.crt", //full path of the certificate
-        "key": "C:\\xampp\\apache\\conf\\key\\private.key", //full path of the private key
-        "passphrase": "123456"
-    }
-}

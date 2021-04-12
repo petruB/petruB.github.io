@@ -1,34 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>ILUMA_WebXR</title>
-		<meta charset="utf-8">
-		<meta name="generator" content="Three.js Editor">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-			body {
-				font-family: sans-serif;
-				font-size: 11px;
-				background-color: #000;
-				margin: 0px;
-			}
-			canvas {
-				display: block;
-			}
-		</style>
-	</head>
-	<body ontouchstart="">
-		<script type="module">
-
-			import * as THREE from './js/three.module.js';
-			import { APP } from './js/app.js';
-			import { ARButton } from './js/webxr/ARButton.js';
-
-			window.THREE = THREE; // Used by APP Scripts.
-			window.ARButton = ARButton; // Used by APP Scripts.
-
-			var player = new APP.Player();
-
-		</script>
-	</body>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | AndroidAventureGame</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/CanvasAventureGame.js", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 1080px; height: 1920px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">AndroidAventureGame</div>
+      </div>
+    </div>
+  </body>
 </html>
